@@ -1,0 +1,20 @@
+{
+
+    "type": "layout",
+    "children": 
+    [
+        {
+            "type": "visualization",
+            "mark": "bar",
+            "encoding": 
+            {
+                "x": "-25",
+                "y": "-30",
+                "color": "red"
+            }
+        }
+    ],
+    "direction": "vertical",
+    "gap": "20"
+
+}

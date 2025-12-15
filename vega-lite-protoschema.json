@@ -1,0 +1,79 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "JSON Schema for Vegas-lite visualization tool",
+
+    "definitions":
+    {
+        "visualization": 
+        {
+            "type": "object",
+            "properties": 
+            {
+                "type": {"const": "visualization"},
+                "mark":
+                {
+                    "type": "string",
+                    "enum": 
+                    [
+                        "bar",
+                        "line",
+                        "point",
+                        "area"
+                    ]
+                },
+                "encoding":
+                {
+                    "type": "object",
+                    "properties":
+                    {
+                        "x":{ "type":"string" },
+                        "y":{ "type":"string" },
+                        "color":{ "type":"string" }
+                    },
+                    "required": []
+                }
+                
+            },
+            "additionalProperties": false,
+            "required": ["type", "mark", "encoding"]
+        },
+        "layout":
+        {
+
+            "type": "object",
+            "properties":
+            {
+                "type": {"const": "layout"},
+                "children":
+                {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/node"}
+                },
+
+                "direction":
+                {
+                    "type": "string",
+                    "enum": ["vertical", "horizontal"]
+                },
+                "gap": { "type": "string" }
+
+            },
+            "additionalProperties": false,
+            "required": ["type", "children", "direction", "gap"]
+        },
+        "node":
+        {
+            "anyOf": [
+                {
+                    "$ref": "#/definitions/visualization"
+                },
+                {
+                    "$ref": "#/definitions/layout"
+                }
+            ]
+        }
+    },
+    
+    "$ref": "#/definitions/node"
+
+}
