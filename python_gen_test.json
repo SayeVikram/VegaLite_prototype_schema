@@ -1,0 +1,9 @@
+{
+    "type": "visualization",
+    "mark": "bar",
+    "encoding": {
+        "x": "-25",
+        "y": "30",
+        "color": "red"
+    }
+}
